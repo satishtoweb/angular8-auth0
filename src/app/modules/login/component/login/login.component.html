@@ -1,0 +1,32 @@
+<header class="header hero bg-gray">
+    <h1 class="text-center">Sign In</h1>
+</header>
+<div class="container">
+    <form [formGroup]="signInForm" (ngSubmit)='onSubmit()'>
+        <div class="columns">
+            <div class="column">
+                <div class="col-xs-12 col-sm-12 col-6">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-input" formControlName="email" type="text" placeholder="Email"
+                            [ngClass]="{ 'is-invalid': isSubmitted && f.email.errors }">
+                        <div *ngIf="isSubmitted && f.email.errors" class="field-error">
+                            <div *ngIf="f.email.errors.required">Email is required.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-input" formControlName="password" type="password" placeholder="Password"
+                            [ngClass]="{ 'is-invalid': isSubmitted && f.password.errors }">
+                        <div *ngIf="isSubmitted && f.password.errors" class="field-error">
+                            <div *ngIf="f.password.errors.required">Password is required.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" [disabled]="!signInForm.valid">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
